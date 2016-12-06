@@ -44,10 +44,51 @@
 				<artifactId>junit</artifactId>
 				<version>${junit-version}</version>
 			</dependency>
+			<!-- arquillian itself -->
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.1.11.Final</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- this is in an extention to arquillian it is optional -->
+			<!-- https://mvnrepository.com/artifact/org.jboss.arquillian.extension/arquillian-transaction-bom -->
+			<dependency>
+				<groupId>org.jboss.arquillian.extension</groupId>
+				<artifactId>arquillian-transaction-bom</artifactId>
+				<version>1.0.3.Final</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.extension</groupId>
+				<artifactId>arquillian-persistence-dbunit</artifactId>
+				<version>1.0.0.Alpha7</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- JUnit integration -->
+			<!-- https://mvnrepository.com/artifact/org.jboss.arquillian.junit/arquillian-junit-container -->
+			<dependency>
+				<groupId>org.jboss.arquillian.junit</groupId>
+				<artifactId>arquillian-junit-container</artifactId>
+				<version>1.1.11.Final</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.container</groupId>
+				<artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+				<version>1.0.0.CR4</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>fish.payara.extras</groupId>
+				<artifactId>payara-embedded-all</artifactId>
+				<version> 4.1.1.163.0.1</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-
 
 	<!-- Plugin management -->
 	<build>
@@ -99,8 +140,6 @@
 						</webResources>
 					</configuration>
 				</plugin>
-
-
 			</plugins>
 		</pluginManagement>
 	</build>
