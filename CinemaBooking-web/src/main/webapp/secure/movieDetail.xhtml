@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core">
+
+<ui:composition>
+	<h:form>
+		<h:panelGrid styleClass="editTable" columns="2" cellpadding="4"
+			cellspacing="0" style="width: 493px; ">
+			<h:outputLabel value="Movie Id" id="id" style="font-weight: bold" />
+			<h:outputText value="#{movieBean.movie.id}" style="font-weight: bold" />
+			<h:outputLabel value="Designation" id="designation" />
+			<h:outputText value="#{movieBean.movie.designation}"
+				style="width: 340px; " />
+			<h:outputLabel value="Actors" id="actors" />
+			<h:outputText value="#{movieBean.movie.actors}"
+				style="width: 340px; height: 100px; " />
+			<h:outputLabel value="Age Restrictions" id="ageRestrictions" />
+			<h:outputText value="#{movieBean.movie.ageRestrictions}"
+				style="width: 340px; " />
+			<h:outputLabel value="Country" id="country" />
+			<h:outputText value="#{movieBean.movie.country}"
+				style="width: 340px; " />
+			<h:outputLabel value="Description" id="description" />
+			<h:outputText value="#{movieBean.movie.description}"
+				style="width: 340px; height: 150px; " />
+			<h:outputLabel value="Director" id="director" />
+			<h:outputText value="#{movieBean.movie.director}"
+				style="width: 340px; " />
+			<h:outputLabel value="Moovie Duration" id="duration" />
+			<h:outputText value="#{movieBean.movie.duration}"
+				style="width: 340px; "></h:outputText>
+			<h:outputLabel value="Genre" id="genre" />
+			<h:outputText value="#{movieBean.movie.genre}" style="width: 340px; " />
+			<h:outputLabel value="Language" id="language" />
+			<h:outputText value="#{movieBean.movie.language}"
+				style="width: 340px; " />
+		</h:panelGrid>
+	</h:form>
+</ui:composition>
+</html>

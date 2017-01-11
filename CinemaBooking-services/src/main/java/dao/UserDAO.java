@@ -13,7 +13,7 @@ import model.User;
 @Stateless
 public class UserDAO extends AbstractDAO<User> implements UserDAOInterface {
 	
-	@PersistenceContext(unitName="Tickets")
+	@PersistenceContext(unitName="CinemaBooking")
     private EntityManager em;
 	
     public UserDAO() {

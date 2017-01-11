@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/Template.xhtml">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="Id" value="#{hallBean.get.id}" />
+			<f:event listener="#{hallBean.find}" type="preRenderView"></f:event>
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:messages errorStyle="color: red" infoStyle="color: green"
+			layout="table" />
+		<h1>Hall Details</h1>
+
+		<h:form>
+			<h:panelGrid columns="2" rules="all" styleClass="viewTable"
+				columnClasses="column1, column2" rowClasses="oddRow, evenRow"
+				cellspacing="0" cellpadding="2">
+
+				<h:outputText value="Hall_Id:" />
+				<h:outputText value="#{hallBean.get.id}" />
+				<h:outputText value="Number:" />
+				<h:outputText value="#{hallBean.get.number}" />
+				<h:outputText value="Description:" />
+				<h:outputText value="#{hallBean.get.description}" />
+			</h:panelGrid>
+			<h:commandButton action="#{hallBean.delete(hall)}" value="Delete" />
+			<h:panelGrid styleClass="navTable">
+				<h:link outcome="edit" value="Edit" includeViewParams="true">
+					<f:param name="id" value="#{hall.id}"></f:param>
+				</h:link>
+				<h:link outcome="createhall" value="Add" />
+				<h:link outcome="hallsinfo" value="List of halls" />
+
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

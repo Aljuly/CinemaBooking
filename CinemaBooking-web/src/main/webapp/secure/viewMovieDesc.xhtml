@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/templates/Template.xhtml">
+	<ui:define name="title">Create Page</ui:define>
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="Id" value="#{movieBean.get.id}"></f:viewParam>
+			<f:event listener="#{movieBean.find}" type="preRenderView"></f:event>
+		</f:metadata>
+
+	</ui:define>
+	<ui:define name="content">
+		<h:messages globalOnly="true" errorStyle="color: red"
+			infoStyle="color: green" layout="table" />
+		<h:head>
+			<h1>View Movie Description</h1>
+		</h:head>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:graphicImage style="width: 200px; height: 200px"></h:graphicImage>
+				<ui:include src="/secure/movieDetail.xhtml"></ui:include>
+				<h:commandButton action="#{movieBean.delete}" value="Delete"
+					style="width: 104px; " />
+			</h:panelGrid>
+			<h:panelGrid styleClass="navTable">
+				<h:link outcome="movieDescEdit" value="Edit"
+					includeViewParams="true">
+					<f:param name="id" value="#{movieBean.get.id}"></f:param>
+				</h:link>
+				<h:link outcome="createMovieDesc" value="Add" />
+				<h:link outcome="moviesList" value="List of movies" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

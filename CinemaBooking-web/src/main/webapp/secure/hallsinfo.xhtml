@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/Template.xhtml">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:event listener="#{hallBean.loadElements}" type="preRenderView"></f:event>
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="title">Halls info</ui:define>
+
+	<ui:define name="content">
+		<h:messages globalOnly="true" errorStyle="color: red"
+			infoStyle="color: green" layout="table" />
+		<h1>Cinema Halls</h1>
+
+		<h:form>
+			<h:dataTable id="hall-table" class="hall-table"
+				value="#{hallBean.getList}" var="hall" rules="all" cellpadding="4"
+				cellspacing="0" style="width: 699px; ">
+
+				<f:facet name="header">
+					<h:outputText value="Halls List" />
+				</f:facet>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Hall Id" />
+					</f:facet>
+					<h:outputText value="#{hallBean.get.id}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Number" />
+					</f:facet>
+					<h:outputText value="#{hallBean.get.number}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Description" />
+					</f:facet>
+					<h:outputText value="#{hall.description}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Seats" />
+					</f:facet>
+					<h:link outcome="Seats" value="View/Edit" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Action" />
+					</f:facet>
+					<h:panelGroup class="action">
+						<h:commandLink value="Delete" action="#{hallBean.delete(hall)}" />
+
+						<h:link outcome="viewHall" value="View" includeViewParams="true">
+							<f:param name="id" value="#{hallBean.get.id}"></f:param>
+						</h:link>
+
+						<h:link outcome="halledit" value="Edit" includeViewParams="true">
+							<f:param name="id" value="#{hallBean.get.id}"></f:param>
+						</h:link>
+					</h:panelGroup>
+				</h:column>
+			</h:dataTable>
+			<h:panelGrid styleClass="navTable">
+				<h:link outcome="createhall" value="Add Hall description" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

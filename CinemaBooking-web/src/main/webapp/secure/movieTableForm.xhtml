@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:form prependId="false">
+		<h:form>
+			<h:dataTable id="movie-table" value="#{movieBean.getList}"
+				var="movie" rules="all" cellpadding="4" cellspacing="0"
+				style="width: 699px; ">
+
+				<f:facet name="header">
+					<h:outputText value="Movies List" />
+				</f:facet>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Movie Id" />
+					</f:facet>
+					<h:outputText value="#{movieBean.movie.id}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Designation" />
+					</f:facet>
+					<h:outputText value="#{moovieBean.moovie.designation}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Duration" />
+					</f:facet>
+					<h:outputText value="#{moovieBean.moovie.duration}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Action" />
+					</f:facet>
+					<h:panelGroup class="action">
+						<h:commandLink value="Delete"
+							action="#{moovieBean.delete(moovie)}" />
+
+						<h:link outcome="viewMoovieDesc" value="View"
+							includeViewParams="true">
+							<f:param name="id" value="#{moovie.id}"></f:param>
+						</h:link>
+
+						<h:link outcome="halledit" value="Edit" includeViewParams="true">
+							<f:param name="id" value="#{moovie.id}"></f:param>
+						</h:link>
+					</h:panelGroup>
+				</h:column>
+			</h:dataTable>
+			<h:panelGrid styleClass="navTable">
+				<h:link outcome="createhall" value="Add Hall description" />
+			</h:panelGrid>
+		</h:form>
+</ui:composition>

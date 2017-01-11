@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/Template.xhtml">
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="id" value="#{spBean.sessionId}"></f:viewParam>
+			<f:viewParam name="mv"></f:viewParam>
+			<f:viewParam name="hl"></f:viewParam>
+			<f:viewParam name="tm"></f:viewParam>
+			<f:event listener="#{spBean.loadElements}" type="preRenderView"></f:event>
+		</f:metadata>
+	</ui:define>
+	<ui:define name="content">
+		<h:outputText value=#{hl}></h:outputText>
+		<h:outputText value=#{tm}></h:outputText>
+		<h:outputText value=#{mv}></h:outputText>
+		<h:form>
+			<h:dataTable id="sp-table" class="sp-table"
+				value="#{spBean.entities}" var="price" rules="all" cellpadding="4"
+				cellspacing="0" style="width: 460px; ">
+				<f:facet name="header">
+					<h:outputText value="Prices for this session" />
+				</f:facet>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id" />
+					</f:facet>
+					<h:outputText value="#{spBean.get().id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Color" />
+					</f:facet>
+					<h:outputText value="#{spBean.get().getPriceGroup().getColor()}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Price" />
+					</f:facet>
+					<h:inputText value="#{spBean.get().price}"
+						rendered="#{spBean.editTable" style="width: 94px; " />
+					<h:outputText value="#{spBean.get().price} UAH"
+						rendered="#{not spBean.editTable" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Action" />
+					</f:facet>
+					<h:commandLink value="Edit" action="#{spBean.editAction(price)}"
+						rendered="#{not spBean.editTable}" />
+				</h:column>
+			</h:dataTable>
+			<h:commandButton value="Save Changes" action="#{spBean.save}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

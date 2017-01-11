@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:define name="metadata">
+	<f:metadata>
+		<f:event listener="#{hallBean.loadHalls}" type="preRenderView"></f:event>
+	</f:metadata>
+</ui:define>
+
+<ui:define name="title">Login</ui:define>
+
+<ui:define name="content">
+
+	<h1>Authorization</h1>
+	<h:form method="post" action="j_security_check">
+		<h:panelGrid border="1" columns="2"
+			style="width: 305px; height: 87px; ">
+			<h:outputText value="Name"></h:outputText>
+			<input type="text" id="j_username" name="j_username" />
+			<h:outputText value="Password"></h:outputText>
+			<input type="password" id="j_password" name="j_password"
+				style="width: 155px;" />
+		</h:panelGrid>
+		<h:button value="Login" onclick="login"></h:button>
+	</h:form>
+
+</ui:define>
+
+
+</html>

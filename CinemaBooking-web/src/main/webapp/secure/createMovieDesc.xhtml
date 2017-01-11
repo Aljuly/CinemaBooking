@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/templates/Template.xhtml">
+	<ui:define name="title">Create Page</ui:define>
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:event listener="#{movieBean.create}" type="preRenderView"></f:event>
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:messages globalOnly="true" errorStyle="color: red"
+			infoStyle="color: green" layout="table" />
+		<h1>Enter new Movie Designation</h1>
+		<form>
+			<h:panelGrid styleClass="createTable" columns="3" cellpadding="4"
+				cellspacing="0">
+
+				<h:outputLabel for="number">Movie:</h:outputLabel>
+				<h:inputText id="name" size="45"
+					value="#{movieBean.get.designation}" required="true"
+					requiredMessage="Number is required" />
+				<h:message for="name" style="color:red" />
+
+				<h:commandButton action="#{movieBean.update}" value="Create Movie" />
+			</h:panelGrid>
+			<h:panelGrid styleClass="navTable">
+				<h:link outcome="viewMovieDesc" value="View Details"
+					includeViewParams="true">
+					<f:param name="id" value="#{movieBean.get.id}"></f:param>
+				</h:link>
+			</h:panelGrid>
+		</form>
+	</ui:define>
+</ui:composition>
+</html>

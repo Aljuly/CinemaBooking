@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="/WEB-INF/templates/Template.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<h:panelGrid border="1" columns="2" style="width: 1050px; ">
+				<h:panelGroup>
+					<h:dataTable id="sts-table" value="#{stsBean.rows}" var="stgroup"
+						rules="all" cellpadding="4" cellspacing="0" style="width: 600px; ">
+						<p:facet name="header">
+							<h:outputText value="Seats in "></h:outputText>
+							<h:outputText value="#rwBean.row.name"></h:outputText>
+						</p:facet>
+						<h:column id="column1">
+							<p:facet name="header">
+								<h:outputText value="Row ID"></h:outputText>
+							</p:facet>
+							<h:outputText value="#{rwBean.seat.id}" />
+						</h:column>
+						<h:column id="column2">
+							<p:facet name="header">
+								<h:outputText value="Seat number"></h:outputText>
+							</p:facet>
+							<h:outputText value="#{rwBean.row.number}" />
+						</h:column>
+						<h:column id="column3">
+							<p:facet name="header">
+								<h:outputText value="Seat Price Group"></h:outputText>
+							</p:facet>
+							<h:outputText value="#{stBean.setat.color}" />
+						</h:column>
+					</h:dataTable>
+					<h:commandButton action="#{stBean.clear}" value="Clear"
+						style="width: 80px; " />
+				</h:panelGroup>
+
+				<h:panelGrid border="1" columns="1" style="width: 264px; ">
+					<h:head style="width: 160px; ">
+						<h>Add seats</h>
+					</h:head>
+					<h:panelGrid border="1" columns="2" style="width: 278px; ">
+						<h:outputText value="From"></h:outputText>
+						<h:inputText id="name" size="45" value="#{rwsBean.row.number}"
+							required="true" requiredMessage="Description is required"
+							style="width: 100px; " />
+						<h:outputText value="To"></h:outputText>
+						<h:inputText id="name" size="45" value="#{rwsBean.row.number}"
+							required="true" requiredMessage="Description is required"
+							style="width: 100px; " />
+						<h:outputText value="Price Group"></h:outputText>
+						<h:inputText id="name" size="45" value="#{rwsBean.row.number}"
+							required="true" requiredMessage="Description is required"
+							style="width: 100px; " />
+					</h:panelGrid>
+					<h:commandButton action="#{stBean.create}" value="Add"
+						style="width: 80px; " />
+				</h:panelGrid>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

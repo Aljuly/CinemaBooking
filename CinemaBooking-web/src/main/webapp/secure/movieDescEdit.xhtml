@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/WEB-INF/templates/Template.xhtml">
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="Id" value="#{movieBean.get.id}"></f:viewParam>
+			<f:event listener="#{movieBean.find}" type="preRenderView"></f:event>
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:messages globalOnly="true" errorStyle="color: red"
+			infoStyle="color: green" layout="table" />
+		<h1>Edit Movie Description</h1>
+		<h:form>
+			<h:panelGrid columns="2" style="width: 910px; ">
+				<ui:include src="/secure/posterSel.xhtml"></ui:include>
+				<ui:include src="/secure/movieDescInput.xhtml"></ui:include>
+				<h:commandButton action="#{movieBean.update}" value="Save"
+					style="width: 104px; " />
+			</h:panelGrid>
+			<h:panelGrid styleClass="navTable">
+				<h:link outcome="viewMovieDesc" value="View Details"
+					includeViewParams="true">
+					<f:param name="id" value="#{movieBean.get.id}"></f:param>
+				</h:link>
+				<h:link outcome="MoviesList" value="List of Movies" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

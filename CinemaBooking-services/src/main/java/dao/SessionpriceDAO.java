@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,6 +22,11 @@ public class SessionpriceDAO extends AbstractDAO<Sessionprice> implements Sessio
 	@Override
 	protected EntityManager getEntityManager() {
 		return em;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Sessionprice> findBySessionId(int id) {
+		return em.createNamedQuery("Sessionprice.findPrices").setParameter("sessionId", id).getResultList();
 	}
 
 }

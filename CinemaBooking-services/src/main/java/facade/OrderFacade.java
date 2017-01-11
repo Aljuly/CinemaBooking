@@ -20,5 +20,4 @@ public class OrderFacade extends AbstractFacade<Order> implements OrderFacadeInt
 		
 		return false;
 	}
-
 }
