@@ -1,11 +1,15 @@
 package managedBeans;
 
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import facade.AbstractFacade;
 import interfacesFacade.SessionPriceFacadeInterface;
 import model.Sessionprice;
 
+@ManagedBean(name="spBean")
+@SessionScoped
 public class SpBean extends GenericBean<Sessionprice> {
 	
 	@EJB
@@ -18,9 +22,9 @@ public class SpBean extends GenericBean<Sessionprice> {
 	public SpBean() {
 		super();
 		setEditTable(false);
-		delInitPage = "";
-		createInitPage = "";
-		updateInitPage = "";
+		delInitPage = "sessionPrice";
+		createInitPage = "sessionPrice";
+		updateInitPage = "sessionPrice";
 	}
 
 	@SuppressWarnings("unchecked")

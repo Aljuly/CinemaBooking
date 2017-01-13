@@ -2,8 +2,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://java.sun.com/jsf/core"
 	xmlns:a4j="http://richfaces.org/a4j"
@@ -14,15 +14,15 @@
 		<h:form>
 			<h:panelGrid border="1" columns="2" style="width: 1050px; ">
 				<h:panelGroup>
-					<h:dataTable id="sts-table" value="#{stsBean.rows}" var="stgroup"
+					<h:dataTable id="sts-table" value="#{stBean.rows}" var="stgroup"
 						rules="all" cellpadding="4" cellspacing="0" style="width: 600px; ">
 						<p:facet name="header">
-							<h:outputText value="Seats in "></h:outputText>
+							<h:outputText value="Seats in row "></h:outputText>
 							<h:outputText value="#rwBean.row.name"></h:outputText>
 						</p:facet>
 						<h:column id="column1">
 							<p:facet name="header">
-								<h:outputText value="Row ID"></h:outputText>
+								<h:outputText value="Seat ID"></h:outputText>
 							</p:facet>
 							<h:outputText value="#{rwBean.seat.id}" />
 						</h:column>
@@ -45,7 +45,7 @@
 
 				<h:panelGrid border="1" columns="1" style="width: 264px; ">
 					<h:head style="width: 160px; ">
-						<h>Add seats</h>
+						<h1>Add seats</h1>
 					</h:head>
 					<h:panelGrid border="1" columns="2" style="width: 278px; ">
 						<h:outputText value="From"></h:outputText>

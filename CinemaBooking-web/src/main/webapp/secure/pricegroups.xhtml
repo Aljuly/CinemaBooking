@@ -2,18 +2,18 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://java.sun.com/jsf/core"
-	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich">
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
 
 <ui:composition template="/WEB-INF/templates/Template.xhtml">
 	<ui:define name="content">
 		<h:form>
 			<h:panelGrid border="1" columns="2" style="width: 1050px; ">
-				<h:dataTable id="pg-table" value="#{pgBean.pgroups}" var="pgroup"
+				<h:dataTable id="pg-table" value="#{pgBean.getList}" var="pgroup"
 					rules="all" cellpadding="4" cellspacing="0" style="width: 600px; ">
 					<p:facet name="header">
 						<h:outputText value="Price Groups"></h:outputText>
@@ -22,38 +22,38 @@
 						<p:facet name="header">
 							<h:outputText value="Group ID"></h:outputText>
 						</p:facet>
-						<h:outputText value="#{pgBean.pgroup.id}" />
+						<h:outputText value="#{pgroup.id}" />
 					</h:column>
 					<h:column id="column2">
 						<p:facet name="header">
 							<h:outputText value="Color"></h:outputText>
 						</p:facet>
-						<h:outputText value="#{pgBean.pgroup.color}" />
+						<h:outputText value="#{pgroup.color}" />
 					</h:column>
 					<h:column id="column3">
 						<p:facet name="header">
 							<h:outputText value="Description"></h:outputText>
 						</p:facet>
-						<h:outputText value="#{pgBean.pgroup.description}" />
+						<h:outputText value="#{pgroup.description}" />
 					</h:column>
 					<h:column id="column4">
 						<p:facet name="header">
 							<h:outputText value="Action"></h:outputText>
 						</p:facet>
-						<h:commandLink value="Delete" action="#{pgBean.delete}" />
+						<h:commandLink value="Delete" action="#{pgBean.delete(pgroup)}" />
 					</h:column>
 				</h:dataTable>
 				<h:panelGrid border="1" columns="1" style="width: 430px; ">
-					<h:head style="width: 160px; ">
-						<h>Add new pricegroup</h>
-					</h:head>
+				<p:facet name="header">
+						<h:outputText value="New Price Group"></h:outputText>
+					</p:facet>
 					<h:panelGrid border="1" columns="2" style="width: 278px; ">
 						<h:outputText value="PriceGroup Description"></h:outputText>
 						<h:inputText id="name" size="45"
-							value="#{pgBean.pgroup.description}" required="true"
+							value="#{pgroup.description}" required="true"
 							requiredMessage="Description is required" style="width: 294px; " />
 						<h:outputText value="Define color" />
-						<rich:colorPicker colorMode="hex" value="#{pgBean.pgroup.color}">
+						<rich:colorPicker colorMode="hex" value="#{pgroup.color}">
 							<a4j:support event="onchange" reRender="painter" />
 						</rich:colorPicker>
 					</h:panelGrid>

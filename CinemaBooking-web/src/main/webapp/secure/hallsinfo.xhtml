@@ -34,14 +34,14 @@
 					<f:facet name="header">
 						<h:outputText value="Hall Id" />
 					</f:facet>
-					<h:outputText value="#{hallBean.get.id}" />
+					<h:outputText value="#{hall.id}" />
 				</h:column>
 
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Number" />
 					</f:facet>
-					<h:outputText value="#{hallBean.get.number}" />
+					<h:outputText value="#{hall.number}" />
 				</h:column>
 
 				<h:column>
@@ -55,7 +55,9 @@
 					<f:facet name="header">
 						<h:outputText value="Seats" />
 					</f:facet>
-					<h:link outcome="Seats" value="View/Edit" />
+					<h:link outcome="rowsManage" value="View/Edit" includeViewParams="true"> 
+						<f:param name="id" value="#{hall.id}"></f:param>
+					</h:link>
 				</h:column>
 
 				<h:column>
@@ -66,11 +68,11 @@
 						<h:commandLink value="Delete" action="#{hallBean.delete(hall)}" />
 
 						<h:link outcome="viewHall" value="View" includeViewParams="true">
-							<f:param name="id" value="#{hallBean.get.id}"></f:param>
+							<f:param name="id" value="#{hall.id}"></f:param>
 						</h:link>
 
 						<h:link outcome="halledit" value="Edit" includeViewParams="true">
-							<f:param name="id" value="#{hallBean.get.id}"></f:param>
+							<f:param name="id" value="#{hall.id}"></f:param>
 						</h:link>
 					</h:panelGroup>
 				</h:column>

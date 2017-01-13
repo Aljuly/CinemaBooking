@@ -5,15 +5,19 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://java.sun.com/jsf/core"
-	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich">
+	xmlns:p="http://java.sun.com/jsf/core">
 
 <ui:composition template="/WEB-INF/templates/Template.xhtml">
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="id" value="#{hallBean.get().id}" />
+			<f:event listener="#{rwsBean.find}" type="preRenderView"></f:event>
+		</f:metadata>
+	</ui:define>
 	<ui:define name="content">
 		<h:form>
 			<h:panelGrid border="1" columns="2" style="width: 1050px; ">
-				<h:dataTable id="rws-table" value="#{rwsBean.rows}" var="rwgroup"
+				<h:dataTable id="rws-table" value="#{rwsBean.getList}" var="row"
 					rules="all" cellpadding="4" cellspacing="0" style="width: 600px; ">
 					<p:facet name="header">
 						<h:outputText value="Rows"></h:outputText>
@@ -22,39 +26,39 @@
 						<p:facet name="header">
 							<h:outputText value="Row ID"></h:outputText>
 						</p:facet>
-						<h:outputText value="#{rwsBean.row.id}" />
+						<h:outputText value="#{row.id}" />
 					</h:column>
 					<h:column id="column2">
 						<p:facet name="header">
 							<h:outputText value="Row number"></h:outputText>
 						</p:facet>
-						<h:outputText value="#{rwsBean.row.number}" />
+						<h:outputText value="#{row.number}" />
 					</h:column>
 					<h:column id="column3">
 						<p:facet name="header">
 							<h:outputText value="Seats Count"></h:outputText>
 						</p:facet>
-						<h:outputText value="#{rwsBean.row.seats.count}" />
+						<h:outputText value="#{row.seats.count}" />
 					</h:column>
 					<h:column id="column4">
 						<p:facet name="header">
 							<h:outputText value="Action"></h:outputText>
 						</p:facet>
 						<h:panelGroup class="action">
-							<h:commandLink value="Delete" action="#{rwsBean.delete}" />
-							<h:link outcome="halledit" value="Edit" includeViewParams="true">
-								<f:param name="id" value="#{rwsBean.row.id}"></f:param>
+							<h:commandLink value="Delete" action="#{rwsBean.delete(row)}" />
+							<h:link outcome="seatsManage" value="Edit" includeViewParams="true">
+								<f:param name="id" value="#{row.id}"></f:param>
 							</h:link>
 						</h:panelGroup>
 					</h:column>
 				</h:dataTable>
 				<h:panelGrid border="1" columns="1" style="width: 430px; ">
-					<h:head style="width: 160px; ">
-						<h>Add new row</h>
-					</h:head>
+					<p:facet name="header">
+						<h:outputText value="Add new row"></h:outputText>
+					</p:facet>
 					<h:panelGrid border="1" columns="2" style="width: 278px; ">
 						<h:outputText value="Row number"></h:outputText>
-						<h:inputText id="name" size="45" value="#{rwsBean.row.number}"
+						<h:inputText id="name" size="45" value="#{row.number}"
 							required="true" requiredMessage="Description is required"
 							style="width: 294px; " />
 					</h:panelGrid>

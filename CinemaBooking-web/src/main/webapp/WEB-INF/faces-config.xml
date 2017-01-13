@@ -25,6 +25,16 @@
 		<managed-bean-class>managedBeans.SpBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>pgBean</managed-bean-name>
+		<managed-bean-class>managedBeans.PgBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>sesBean</managed-bean-name>
+		<managed-bean-class>managedBeans.SesBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<display-name>public/login.xhtml</display-name>
 		<from-view-id>/public/login.xhtml</from-view-id>
@@ -51,6 +61,13 @@
 		<from-view-id>/secure/hallsinfo.xhtml</from-view-id>
 		<navigation-case>
 			<to-view-id>/secure/halledit.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>secure/hallsinfo.xhtml</display-name>
+		<from-view-id>/secure/hallsinfo.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/secure/pricegroups.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

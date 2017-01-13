@@ -18,7 +18,7 @@ import facade.AbstractFacade;
 import interfacesFacade.MovieFacadeInterface;
 import model.Movie;
 
-@ManagedBean(name="Movie")
+@ManagedBean(name="movieBean")
 @SessionScoped
 public class MovieBean extends GenericBean<Movie>{
 	

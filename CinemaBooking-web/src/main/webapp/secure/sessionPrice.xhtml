@@ -2,9 +2,9 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="/WEB-INF/templates/Template.xhtml">
 	<ui:define name="metadata">
@@ -17,13 +17,16 @@
 		</f:metadata>
 	</ui:define>
 	<ui:define name="content">
-		<h:outputText value=#{hl}></h:outputText>
-		<h:outputText value=#{tm}></h:outputText>
-		<h:outputText value=#{mv}></h:outputText>
+		<h:outputText value="Hall "></h:outputText>
+		<h:outputText value="#{hl} "></h:outputText>
+		<h:outputText value="Session "></h:outputText>
+		<h:outputText value="#{tm} "></h:outputText>
+		<h:outputText value="Movie "></h:outputText>
+		<h:outputText value="#{mv}"></h:outputText>
 		<h:form>
 			<h:dataTable id="sp-table" class="sp-table"
-				value="#{spBean.entities}" var="price" rules="all" cellpadding="4"
-				cellspacing="0" style="width: 460px; ">
+				value="#{spBean.getList}" var="price" rules="all" cellpadding="4"
+				cellspacing="0" style="width: 554px; ">
 				<f:facet name="header">
 					<h:outputText value="Prices for this session" />
 				</f:facet>
@@ -31,22 +34,22 @@
 					<f:facet name="header">
 						<h:outputText value="Id" />
 					</f:facet>
-					<h:outputText value="#{spBean.get().id}" />
+					<h:outputText value="#{price.id}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Color" />
 					</f:facet>
-					<h:outputText value="#{spBean.get().getPriceGroup().getColor()}" />
+					<h:outputText value="#{price.pricegroup.color}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Price" />
 					</f:facet>
-					<h:inputText value="#{spBean.get().price}"
-						rendered="#{spBean.editTable" style="width: 94px; " />
+					<h:inputText value="#{price.price}"
+						rendered="#{spBean.editTable}" style="width: 94px; " />
 					<h:outputText value="#{spBean.get().price} UAH"
-						rendered="#{not spBean.editTable" />
+						rendered="#{not spBean.editTable}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
@@ -56,7 +59,7 @@
 						rendered="#{not spBean.editTable}" />
 				</h:column>
 			</h:dataTable>
-			<h:commandButton value="Save Changes" action="#{spBean.save}" />
+			<h:commandButton value="Save Changes" action="#{spBean.update}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

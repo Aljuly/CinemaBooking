@@ -43,7 +43,7 @@ public class Movie implements Serializable {
 	private String language;
 
 	//bi-directional many-to-one association to Session
-	@OneToMany(mappedBy="moovie")
+	@OneToMany(mappedBy="movie")
 	private Set<Session> sessions;
 
 	public Movie() {

@@ -29,8 +29,8 @@ public class Session implements Serializable {
 
 	//bi-directional many-to-one association to Moovie
 	@ManyToOne
-	@JoinColumn(name="idMoovie")
-	private Movie moovie;
+	@JoinColumn(name="idMovie")
+	private Movie movie;
 
 	//bi-directional many-to-one association to Hall
 	@ManyToOne
@@ -83,11 +83,11 @@ public class Session implements Serializable {
 	}
 
 	public Movie getMovie() {
-		return this.moovie;
+		return this.movie;
 	}
 
 	public void setMovie(Movie moovie) {
-		this.moovie = moovie;
+		this.movie = moovie;
 	}
 
 	public Hall getHall() {

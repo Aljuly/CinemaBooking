@@ -2,8 +2,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://java.sun.com/jsf/core"
 	xmlns:a4j="http://richfaces.org/a4j"
@@ -13,7 +13,7 @@
 	<ui:define name="content">
 		<h:form>
 			<h:panelgrid border="1" columns="2" style="width: 1063px; ">
-				<h:dataTable id="rws-table" value="#{rwsBean.rows}" var="rwgroup"
+				<h:dataTable id="rws-table" value="#{sesBean.getList}" var="session"
 					rules="all" cellpadding="4" cellspacing="0" style="width: 644px; ">
 					<p:facet name="header">
 						<h:outputText value="Sessions"></h:outputText>
@@ -22,69 +22,69 @@
 						<p:facet name="header">
 							<h:outputText value="Session ID"></h:outputText>
 						</p:facet>
-						<h:outputText value="#{snBean.session.id}" />
+						<h:outputText value="#{session.id}" />
 					</h:column>
 					<h:column id="column2">
 						<p:facet name="header">
 							<h:outputText value="Hall"></h:outputText>
 						</p:facet>
-						<h:outputText value="#{snBean.session.hall}" />
+						<h:outputText value="#{session.hall.number}" />
 					</h:column>
 					<h:column id="column3">
 						<p:facet name="header">
 							<h:outputText value="Time"></h:outputText>
 						</p:facet>
-						<h:outputText value="#{snBean.session.sessionTime}" />
+						<h:outputText value="#{session.sessionTime}" />
 					</h:column>
 					<h:column id="column4">
 						<p:facet name="header">
-							<h:outputText value="Moovie"></h:outputText>
+							<h:outputText value="Movie"></h:outputText>
 						</p:facet>
-						<h:outputText value="#{snBean.session.moovie}"></h:outputText>
+						<h:outputText value="#{session.movie.designation}"></h:outputText>
 					</h:column>
 					<h:column id="column5">
 						<p:facet name="header">
 							<h:outputText value="Action"></h:outputText>
 						</p:facet>
 						<h:panelGroup class="action" style="width: 65px; ">
-							<h:commandLink value="Delete" action="#{snBean.delete}" />
+							<h:commandLink value="Delete" action="#{snBean.delete(session)}" />
 							<h:link outcome="sessionPrice" value="Set Price"
 								includeViewParams="true">
-								<f:param name="id" value="#{snBean.session.id}"></f:param>
-								<f:param name="hl" value="#{snBean.session.hall}"></f:param>
-								<f:param name="tm" value="#{snBean.session.sessionTime}"></f:param>
-								<f:param name="mv" value="#{snBean.session.moovie.designation}"></f:param>
+								<f:param name="id" value="#{session.id}"></f:param>
+								<f:param name="hl" value="#{session.hall}"></f:param>
+								<f:param name="tm" value="#{sessionTime}"></f:param>
+								<f:param name="mv" value="#{session.movie.designation}"></f:param>
 							</h:link>
 						</h:panelGroup>
 					</h:column>
 				</h:dataTable>
 				<h:panelGrid border="1" columns="1" style="width: 366px; ">
-					<h:head style="width: 253px; ">
-						<h>Add new Session</h>
-					</h:head>
+					<p:facet name="header">
+						<h:outputText value="Add new Session"></h:outputText>
+					</p:facet>
 					<h:panelGrid border="1" columns="2" style="width: 355px; ">
 						<h:outputText value="Select hall "></h:outputText>
-						<h:selectOneMenu value="#{snBean.session.idHall}"
+						<h:selectOneMenu value="#{session.idHall}"
 							style="width: 215px; ">
 							<f:selectItems value="#{hallBean.halls}" var="hall"
 								itemValue="#{hall.id}" itemLabel="#{hall.number}" />
 						</h:selectOneMenu>
 						<h:outputText value="Select Date"></h:outputText>
 						<a4j:outputPanel id="calendar" layout="block">
-							<rich:calendar value="#{calendarBean.selectedDate}"
-								locale="#{calendarBean.locale}" popup="#{calendarBean.popup}"
-								datePattern="#{calendarBean.pattern}"
-								showApplyButton="#{calendarBean.showApply}" cellWidth="24px"
+							<rich:calendar value="#{session.sessionTime}"
+								locale="#{session.locale}" popup="#{session.popup}"
+								datePattern="#{session.pattern}"
+								showApplyButton="#{session.showApply}" cellWidth="24px"
 								cellHeight="22px" style="width:200px" />
 						</a4j:outputPanel>
-						<h:outputText value="Select Moovie"></h:outputText>
-						<h:selectOneMenu value="#{snBean.session.idMoovie}"
+						<h:outputText value="Select Movie"></h:outputText>
+						<h:selectOneMenu value="#{session.idMovie}"
 							style="width: 215px; ">
-							<f:selectItems value="#{moovieBean.moovies}" var="moovie"
-								itemValue="#{moovie.id}" itemLabel="#{moovie.designation}" />
+							<f:selectItems value="#{movieBean.getList}" var="movie"
+								itemValue="#{movie.id}" itemLabel="#{movie.designation}" />
 						</h:selectOneMenu>
 					</h:panelGrid>
-					<h:commandButton action="#{snBean.create}" value="Add session" />
+					<h:commandButton action="#{sesBean.create}" value="Add session" />
 				</h:panelGrid>
 			</h:panelgrid>
 		</h:form>

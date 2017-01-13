@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14842130148940" configfile="/CinemaBooking-web/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="public/login.xhtml" x="78" y="252" id="pf14842254974331" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14842254974332" path="/public/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="secure/hallsinfo.xhtml" x="228" y="252" id="pf14842254974333" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf14842254974334 pf14842254974335 pf14842254974336 pf14842254974337" inlinks="pf14842254974332" path="/secure/hallsinfo.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="secure/viewhall.xhtml" x="514" y="137" id="pf14842254974338" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14842254974334" path="/secure/viewhall.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="secure/createhall.xhtml" x="510" y="252" id="pf14842254974339" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf14842254974335" path="/secure/createhall.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="secure/halledit.xhtml" x="516" y="360" id="pf148422549743310" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf14842254974336" path="/secure/halledit.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="secure/pricegroups.xhtml" x="504" y="24" id="pf148422549743311" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf14842254974337" path="/secure/pricegroups.xhtml"/>
+  <links id="pf14842254974332" target="pf14842254974333" source="pf14842254974331"/>
+  <links id="pf14842254974334" target="pf14842254974338" source="pf14842254974333"/>
+  <links id="pf14842254974335" target="pf14842254974339" source="pf14842254974333"/>
+  <links id="pf14842254974336" target="pf148422549743310" source="pf14842254974333"/>
+  <links id="pf14842254974337" target="pf148422549743311" source="pf14842254974333"/>
+</pageflow:Pageflow>

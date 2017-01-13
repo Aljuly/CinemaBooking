@@ -8,7 +8,7 @@ import facade.AbstractFacade;
 import interfacesFacade.HallFacadeInterface;
 import model.Hall;
 
-@ManagedBean(name="Hall")
+@ManagedBean(name="hallBean")
 @SessionScoped
 public class HallBean extends GenericBean<Hall> {
 	

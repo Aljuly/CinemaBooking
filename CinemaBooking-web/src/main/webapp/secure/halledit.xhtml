@@ -9,7 +9,7 @@
 <ui:composition template="/WEB-INF/templates/Template.xhtml">
 	<ui:define name="metadata">
 		<f:metadata>
-			<f:viewParam name="Id" value="#{hallBean.get.id}" />
+			<f:viewParam name="Id" value="#{hallBean.get().id}" />
 			<f:event listener="#{hallBean.find}" type="preRenderView"></f:event>
 		</f:metadata>
 	</ui:define>
@@ -23,11 +23,11 @@
 			<h:panelGrid styleClass="editTable" columns="2" cellpadding="4"
 				cellspacing="0" style="width: 493px; ">
 				<h:outputLabel value="Hall Id" id="id" />
-				<h:outputText value="#{hallBean.get.id}" />
+				<h:outputText value="#{hallBean.get().id}" />
 				<h:outputLabel value="Number" id="name" />
-				<h:inputText value="#{hallBean.get.number}" />
+				<h:inputText value="#{hallBean.get().number}" />
 				<h:outputLabel value="Description" id="Description" />
-				<h:inputText value="#{hallBean.get.description}"
+				<h:inputText value="#{hallBean.get().description}"
 					style=" width : 433px;" />
 
 				<h:commandButton action="#{hallBean.update}" value="Edit Hall" />
@@ -36,7 +36,7 @@
 			<h:panelGrid styleClass="navTable">
 				<h:link outcome="viewhall" value="View Details"
 					includeViewParams="true">
-					<f:param name="id" value="#{hallBean.get.id}"></f:param>
+					<f:param name="id" value="#{hallBean.get().id}"></f:param>
 				</h:link>
 				<h:link outcome="hallsinfo" value="List of Halls" />
 			</h:panelGrid>
