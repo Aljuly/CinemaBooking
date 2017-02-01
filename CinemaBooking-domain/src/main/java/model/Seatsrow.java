@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.*;
@@ -34,7 +35,18 @@ public class Seatsrow implements Serializable {
 
 	public Seatsrow() {
 	}
+	
+	public Seatsrow(String number) {
+		this.rownumber = number;
+	}
 
+	public void addSeats(Seat... seats) {
+		this.seats.addAll(Arrays.asList(seats));
+		for (Seat seat : seats) {
+			seat.setSeatsrow(this);
+		}
+	}
+	
 	public int getId() {
 		return this.id;
 	}

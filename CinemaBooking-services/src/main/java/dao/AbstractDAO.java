@@ -54,6 +54,8 @@ public abstract class AbstractDAO<T> implements AbstractDAOInterface<T> {
         return getEntityManager().createQuery(cq).getResultList();
     }
  
+    
+    
     @SuppressWarnings("unchecked")
     protected T findOneResult(String namedQuery, Map<String, Object> parameters) {
         T result = null;
@@ -75,7 +77,7 @@ public abstract class AbstractDAO<T> implements AbstractDAOInterface<T> {
  
         return result;
     }
- 
+     
     private void populateQueryParameters(Query query, Map<String, Object> parameters) {
  
         for (Entry<String, Object> entry : parameters.entrySet()) {

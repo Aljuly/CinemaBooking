@@ -2,8 +2,9 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Set;
+import javax.validation.constraints.NotNull;
 
+import java.util.Set;
 
 /**
  * The persistent class for the order database table.
@@ -19,6 +20,8 @@ public class Order implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ORDER_ID_GENERATOR")
 	private int id;
 
+	@Column(name = "orderCod")
+	@NotNull
 	private String orderCod;
 
 	//bi-directional many-to-one association to User
@@ -37,7 +40,15 @@ public class Order implements Serializable {
 
 	public Order() {
 	}
+	
+	public Order(String cod) {
+		this.orderCod = cod;
+	}
 
+	public void addSeatsToOrder(Seatselected... seatselecteds) {
+		
+	}
+	
 	public int getId() {
 		return this.id;
 	}

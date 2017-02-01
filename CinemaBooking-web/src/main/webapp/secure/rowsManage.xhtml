@@ -10,8 +10,8 @@
 <ui:composition template="/WEB-INF/templates/Template.xhtml">
 	<ui:define name="metadata">
 		<f:metadata>
-			<f:viewParam name="id" value="#{hallBean.get().id}" />
-			<f:event listener="#{rwsBean.find}" type="preRenderView"></f:event>
+			<f:viewParam name="id" value="#{rwsBean.hallId}" />
+			<f:event listener="#{rwsBean.loadElements}" type="preRenderView"></f:event>
 		</f:metadata>
 	</ui:define>
 	<ui:define name="content">

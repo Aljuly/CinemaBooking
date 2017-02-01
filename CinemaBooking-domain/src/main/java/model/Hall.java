@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 //http://www.developerscrappad.com/435/java/java-ee/ejb-3-x-jpa-bean-managed-transaction-with-javax-ejb-usertransaction/
@@ -42,6 +43,25 @@ public class Hall implements Serializable {
 	private List<Session> sessions;
 
 	public Hall() {
+	}
+	
+	public Hall(String number, String desc) {
+		this.description = desc;
+		this.number = number;
+	}
+	
+	public void addSeatsrows(Seatsrow... rows) {
+		this.seatsrows.addAll(Arrays.asList(rows));
+		for (Seatsrow row : rows) {
+			row.setHall(this);
+		}
+	}
+	
+	public void addSessions(Session... sessions) {
+		this.sessions.addAll(Arrays.asList(sessions));
+		for (Session session : sessions) {
+			session.setHall(this);
+		}
 	}
 
 	public int getId() {

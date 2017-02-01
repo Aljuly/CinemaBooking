@@ -21,4 +21,9 @@ public class SeatFacade extends AbstractFacade<Seat> implements SeatFacadeInterf
 		return false;
 	}
 
+	@Override
+	public int deleteAllSeatsInRow(int idRow) {
+		return entityDAO.deleteAllSeatsInRow(idRow);
+	}
+
 }

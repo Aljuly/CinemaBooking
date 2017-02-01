@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import java.util.Arrays;
 import java.util.Set;
 
 /**
@@ -21,11 +24,15 @@ public class User implements Serializable {
 	@SequenceGenerator(name="USER_ID_GENERATOR", sequenceName="ORDER_SEQUENCE")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USER_ID_GENERATOR")
 	private int id;
-
+	
+	@Column(name = "email")
+	@NotNull
 	private String email;
-
+	
+	@Column(name = "name")
 	private String name;
-
+	
+	@Column(name = "surename")
 	private String surename;
 
 	//bi-directional many-to-one association to Order
@@ -33,6 +40,19 @@ public class User implements Serializable {
 	private Set<Order> orders;
 
 	public User() {
+	}
+	
+	public User(String email, String name, String surename) {
+		this.email = email;
+		this.name = name;
+		this.surename = surename;
+	}
+	
+	public void addOrders(Order...orders) {
+		this.orders.addAll(Arrays.asList(orders));
+		for (Order order : orders) {
+			order.setUser(this);
+		}
 	}
 
 	public int getId() {

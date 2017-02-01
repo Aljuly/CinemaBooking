@@ -82,7 +82,7 @@ public abstract class GenericBean<T> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private void newEntityInstance() {
+	protected void newEntityInstance() {
 		String className = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0].getTypeName();
 		try {
 			entity = (T) Class.forName(className).newInstance();

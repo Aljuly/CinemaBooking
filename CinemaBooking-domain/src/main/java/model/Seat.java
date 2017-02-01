@@ -2,15 +2,18 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Set;
 
+import java.util.Arrays;
+import java.util.Set;
 
 /**
  * The persistent class for the seat database table.
  * 
  */
 @Entity
-@NamedQuery(name="Seat.findAll", query="SELECT s FROM Seat s")
+@NamedQueries({
+	@NamedQuery(name="Seat.findAll", query="SELECT s FROM Seat s"),
+	@NamedQuery(name="Seat.deleteAll", query="DELETE FROM Seat s WHERE s.idRow = :idRow")})
 public class Seat implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -38,7 +41,18 @@ public class Seat implements Serializable {
 
 	public Seat() {
 	}
-
+		
+	public Seat(String place) {
+		this.placeNumber = place;
+	}
+	
+	public void addOrders(Seatselected... seatselecteds) {
+		this.seatselecteds.addAll(Arrays.asList(seatselecteds));
+		for (Seatselected seatselected : seatselecteds) {
+			seatselected.setSeat(this);
+		}
+	}
+	
 	public int getId() {
 		return this.id;
 	}

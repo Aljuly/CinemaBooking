@@ -8,6 +8,7 @@ import javax.persistence.*;
  * The persistent class for the seatselected database table.
  * 
  */
+
 @Entity
 @NamedQuery(name="Seatselected.findAll", query="SELECT s FROM Seatselected s")
 public class Seatselected implements Serializable {

@@ -35,6 +35,16 @@
 		<managed-bean-class>managedBeans.SesBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>rwsBean</managed-bean-name>
+		<managed-bean-class>managedBeans.RwsBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>stBean</managed-bean-name>
+		<managed-bean-class>managedBeans.stBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<display-name>public/login.xhtml</display-name>
 		<from-view-id>/public/login.xhtml</from-view-id>
